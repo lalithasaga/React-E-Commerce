@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.store__generics {
+  font-size: 100px;
+  background-color: gray;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-top: 1px;
+  text-align: center;
+}
+  
