@@ -32,24 +32,22 @@ const productsArr = [
 
 const Store = () => (
   <div className="store">
-    
     <p className="store__music">Music</p>
     <CartContext.Consumer>
-      {({ cart, addToCart }) =>
-       <>
-       <div className="store__row">
-         {productsArr.slice(0, 2).map((product, index) => (
-           <Product key={product.id} product={product} addToCart={addToCart} />
-         ))}
-       </div>
-       <div className="store__row">
-         {productsArr.slice(2, 4).map((product, index) => (
-           <Product key={product.id} product={product} addToCart={addToCart} />
-         ))}
-       </div>
-     </>
-    
-      }
+      {({ cart, addToCart }) => (
+        <>
+          <div className="store__row">
+            {productsArr.slice(0, 2).map((product, index) => (
+              <Product key={product.id} product={product} addToCart={addToCart} />
+            ))}
+          </div>
+          <div className="store__row">
+            {productsArr.slice(2, 4).map((product, index) => (
+              <Product key={product.id} product={product} addToCart={addToCart} />
+            ))}
+          </div>
+        </>
+      )}
     </CartContext.Consumer>
     <Link to="/cart">See the cart</Link>
   </div>
@@ -62,13 +60,14 @@ const Product = ({ product, addToCart }) => {
 
   return (
     <div className="store__product">
-        <h3>{product.title}</h3>
-      <img src={product.imageUrl} alt={product.title} />
-      
+      <h3>{product.title}</h3>
+      <Link to={`/product/${product.id}`}>
+        <img src={product.imageUrl} alt={product.title} />
+      </Link>
       <p>{product.price}</p>
       <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
 };
 
-export default Store;
+export { Store, productsArr };
